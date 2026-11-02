@@ -38,7 +38,11 @@
     .shell{padding-top:calc(28px + env(safe-area-inset-top,0px))}
     .tabs{bottom:max(10px,env(safe-area-inset-bottom,0px))}
     @media(min-width:700px){.shell{padding-top:calc(40px + env(safe-area-inset-top,0px))}}
-    @media(max-width:520px){input.field,select.field,textarea.field{font-size:16px}}
+    @media(max-width:520px){
+      input.field,select.field,textarea.field{font-size:16px}
+      .subnav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0 0 17px;padding:2px 0 6px;overflow:visible}
+      .subnav button{width:100%;min-height:44px;white-space:normal}
+    }
     </style>
 </head>
 <body>
