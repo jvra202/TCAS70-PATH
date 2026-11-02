@@ -82,7 +82,7 @@
   let viewMonth=new Date(today.getFullYear(),today.getMonth(),1), selectedDate=iso(today), toastTimer;
   const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)], esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   function save(){localStorage.setItem(KEY,JSON.stringify(state));renderAll()}function notify(s){const t=$('#toast');t.textContent=s;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2100)}
-  function goto(page){$$('.page').forEach(p=>p.classList.toggle('active',p.id===`page-${page}`));$$('.tab').forEach(t=>t.classList.toggle('active',t.dataset.page===page));window.scrollTo({top:0,behavior:state.settings.reduce?'instant':'smooth'})}
+  function goto(page){$$('.page').forEach(p=>p.classList.toggle('active',p.id===`page-${page}`));$$('.tab').forEach(t=>t.classList.toggle('active',t.dataset.page===page));window.scrollTo({top:0,behavior:'auto'})}
   function profileTab(tab){goto('profile');if(tab)selectProfile(tab)}
   function selectProfile(tab){$$('[data-profile-switch]').forEach(b=>b.classList.toggle('active',b.dataset.profileSwitch===tab));$$('.profile-panel').forEach(p=>{p.hidden=p.id!==`profile-${tab}`})}
   $$('[data-page]').forEach(b=>b.onclick=()=>goto(b.dataset.page));$$('[data-goto]').forEach(b=>b.onclick=()=>b.dataset.goto==='profile'?profileTab(b.dataset.profileTab):goto(b.dataset.goto));$$('[data-profile-switch]').forEach(b=>b.onclick=()=>selectProfile(b.dataset.profileSwitch));
